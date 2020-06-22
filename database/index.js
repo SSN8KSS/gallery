@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 mongoose.connect(
   `mongodb://localhost/fec`,
-  { useNewUrlParser: true, useUnifiedTopology: true }  // 2nd arg b/c terminal asked me to lmao
+  { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true }  // 2nd arg b/c terminal asked me to lmao
 );
 
 const db = mongoose.connection;

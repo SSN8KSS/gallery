@@ -36,3 +36,7 @@ From within the root directory:
 npm install -g webpack
 npm install
 ```
+// TODO:
+- refactor assignFilters in generatePhotoInfo in seedHelpers.js to be more accurate to real life, e.g. follow actual categories/types of the photos rather than random?
+- fill out trips for generatePhotoInfo based on actual trips user creates w/ UI
+- refactor user contributions in generateUserInfo to count actual # of contributions per user?
