@@ -1,9 +1,20 @@
 const express = require('express');
+const db = require('../database/index.js');
+const Hotels = require('../database/schema.js');
+
+// const seed = require('../database/seedData.js');
 
 const app = express();
 const port = 3000;
-//test
-const schema = require('../database/schema.js');
-const Users = schema.User;
-const Photos = schema.Photo;
-const Hotels = schema.Hotel;
+
+app.get('/', (req, res) => {
+  console.log('GET RECEIVED');
+  res.send('hi');
+});
+
+app.get('/api/:hotelID/photos', (req, res) => {
+  Hotels.find({ id: req.params.hotelID })
+    .then(data => res.status(200).send(data));
+});
+
+app.listen(port, () => console.log(`listening on port ${port}`));

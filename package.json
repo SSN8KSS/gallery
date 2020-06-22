@@ -7,11 +7,16 @@
   "engines": {
     "node": ">=6.13.0"
   },
-  "scripts": {},
+  "scripts": {
+    "seed": "node database/seedData.js",
+    "nodemon": "nodemon server/app.js"
+  },
   "dependencies": {
     "6": "0.0.1",
+    "axios": "^0.19.2",
     "express": "^4.17.1",
     "mongoose": "^5.9.19",
+    "nodemon": "^2.0.4",
     "react": "^16.13.1"
   },
   "devDependencies": {
