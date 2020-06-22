@@ -1,7 +1,6 @@
 const express = require('express');
 const db = require('../database/index.js');
 const Hotels = require('../database/schema.js');
-
 // const seed = require('../database/seedData.js');
 
 const app = express();
@@ -9,7 +8,7 @@ const port = 3000;
 
 app.get('/', (req, res) => {
   console.log('GET RECEIVED');
-  res.send('hi');
+  res.send('hey');
 });
 
 app.get('/api/:hotelID/photos', (req, res) => {
