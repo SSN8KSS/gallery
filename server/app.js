@@ -1,5 +1,5 @@
 const express = require('express');
-const db = require('../database/index.js');
+// const db = require('../database/index.js');
 const Hotels = require('../database/schema.js');
 // const seed = require('../database/seedData.js');
 

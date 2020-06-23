@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
 mongoose.connect(
-  `mongodb://localhost/fec`,
-  { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true }  // 2nd arg b/c terminal asked me to lmao
+  'mongodb://localhost/fec',
+  { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true }
 );
 
 const db = mongoose.connection;
