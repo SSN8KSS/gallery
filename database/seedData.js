@@ -83,7 +83,7 @@ const storePhotos = photoData => {
 };
 
 const printHotels = () => {
-  Hotels.find({}).limit(1)
+  Hotels.find({})
     .then(hotels => {
       console.log(hotels[0].photos);
       return hotels;
