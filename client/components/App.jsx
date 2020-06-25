@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
 
 class App extends Component {
   constructor(props) {
@@ -23,10 +24,10 @@ class App extends Component {
     }
     return (
       <div>
-        <img className="main-img" alt="" src={ hotel.photos[0].URL }></img>
-        <img className="img" alt="" src={ hotel.photos[1].URL }></img>
-        <img className="img" alt="" src={ hotel.photos[2].URL }></img>
-        <img className="img" alt="" src={ hotel.photos[3].URL }></img>
+        <div className="main-img" alt="" src={ hotel.photos[0].URL }></div>
+        <div className="img" alt="" src={ hotel.photos[1].URL }></div>
+        <div className="img" alt="" src={ hotel.photos[2].URL }></div>
+        <div className="img" alt="" src={ hotel.photos[3].URL }></div>
       </div>
     );
   }
