@@ -3,7 +3,6 @@ const getRandomIndex = arr => Math.floor( Math.random() * arr.length );
 // these functions generate random info for each schema
 
 const generateHotelInfo = photos => {
-
   const createHotelNames = () => {
     const arr1 = [ 'Golden', 'Red', 'Blue', 'Purple', 'White', 'Scaly', 'Sunny', 'Warm', 'Happy', 'Ugly' ];
     const arr2 = [ 'Sands', 'Spring', 'Slopes', 'Springs', 'Sun', 'Skies', 'Sky', 'Stone', 'Waters', 'Lizard' ];

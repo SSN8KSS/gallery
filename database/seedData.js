@@ -1,5 +1,5 @@
-const db = require('./index.js');
 const axios = require('axios');
+const db = require('./index.js');
 const Hotels = require('./schema.js');
 const helpers = require('./seedHelpers.js');
 
@@ -16,7 +16,7 @@ const seedData = () => {
         p = p.then( () => new Promise( resolve => (
           getPhotosFromUnsplash(num)
             .then( res => storeUsers(res.data.results, storePhotos) )
-            // .then( data => storePhotos(data) )
+            .then( data => storePhotos(data) )
             .then(resolve)
             .catch(err => console.log('getPhotosFromUnsplash ERROR:', err))
         ) ) );
@@ -28,11 +28,11 @@ const seedData = () => {
 seedData();
 
 const getPhotosFromUnsplash = pageNum => {
-  const unsplashKey = `NBH3f9wudZBLZabSuudUjeQsQP2HAedTgXy9Ogk8MEU`;
+  const unsplashKey = 'NBH3f9wudZBLZabSuudUjeQsQP2HAedTgXy9Ogk8MEU';
 
   return axios({
     method: 'get',
-    url: `https://api.unsplash.com/search/photos/?client_id=${ unsplashKey }`,
+    url: `https://api.unsplash.com/search/photos/?client_id=${unsplashKey}`,
     params: {
       query: 'hotel',
       per_page: 30,
@@ -42,7 +42,7 @@ const getPhotosFromUnsplash = pageNum => {
 };
 
 const storeUsers = (photoData, storePhotos) => {
-  for (let photo of photoData) {
+  photoData.forEach(photo => {
     const userData = photo.user;
     const randomUserInfo = helpers.generateUserInfo();
 
@@ -54,15 +54,16 @@ const storeUsers = (photoData, storePhotos) => {
       type: randomUserInfo.type,
       rating: randomUserInfo.rating,
       contributions: randomUserInfo.contributions,
-      review: randomUserInfo.review // will often be the photo caption, unless user type is Management?
+      review: randomUserInfo.review // will often be photo caption, unless user type is Management?
     };
     users.push(newUser);
-  }
-  storePhotos(photoData);
+  });
+  return photoData;
+  // storePhotos(photoData);
 };
 
 const storePhotos = photoData => {
-  for (let photo of photoData) {
+  photoData.forEach(photo => {
     const randomPhotoInfo = helpers.generatePhotoInfo(users);
 
     const newPhoto = {
@@ -77,17 +78,17 @@ const storePhotos = photoData => {
       helpful: randomPhotoInfo.helpful
     };
     photos.push(newPhoto);
-  }
+  });
   photos.length === 120 && seedHotels(); // only seed hotels when photos arr is full
 };
 
 const printHotels = () => {
-  Hotels.find({}).limit(1)
+  Hotels.find({})
     .then(hotels => {
       console.log(hotels[0].photos);
       return hotels;
     })
-    .then(hotels => console.log(`# of Hotels stored:`, hotels.length))
+    .then(hotels => console.log('# of Hotels stored:', hotels.length))
     .catch(err => console.log('printHotels ERROR:', err));
 };
 
@@ -100,10 +101,10 @@ function seedHotels() {
       name: randomHotelInfo.names[i],
       photos: randomHotelInfo.photos,
       photoAlbums: randomHotelInfo.albums,
-      price: randomHotelInfo.price // the price next to the View Deal button on upper right of full view modal
+      price: randomHotelInfo.price // price next to View Deal button on upper right of full view modal
     });
     newHotel.save( err => err ? console.log('err seeding hotels:', err) : printHotels() );
   }
-};
+}
 
 module.exports = seedData;
