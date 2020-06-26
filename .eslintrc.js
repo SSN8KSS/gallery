@@ -30,6 +30,7 @@ module.exports = {
     "space-in-parens": 0,
     "no-unused-expressions": 0,
     "no-plusplus": 0,
+    "react/jsx-curly-spacing": 0,
     "no-confusing-arrow": 0
   },
 };

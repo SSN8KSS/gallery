@@ -68,7 +68,7 @@ const storePhotos = photoData => {
 
     const newPhoto = {
       id: photo.id,
-      URL: photo.urls.raw,
+      URL: photo.urls.regular,
       date: photo.created_at,
       user: randomPhotoInfo.user,
       caption: randomPhotoInfo.user.review,
