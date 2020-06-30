@@ -22,7 +22,7 @@ class App extends Component {
 
   componentDidMount() {
     const splitUrl = window.location.href.split('/');
-    const hotelID = splitUrl[splitUrl.length - 1];
+    const hotelID = splitUrl[splitUrl.length - 1] || '1';
 
     axios.get(`/api/${hotelID}/photos`)
       .then(res => {
@@ -43,6 +43,7 @@ class App extends Component {
     const albums = hotel.photoAlbums;
     const offLimits = [ 'Favorites' ];
     const secondAlbum = albums[ App.getRandIdx(albums, offLimits) ];
+
     offLimits.push(secondAlbum);
     return [ albums[1], secondAlbum, albums[App.getRandIdx(albums, offLimits)] ];
   }
@@ -50,6 +51,7 @@ class App extends Component {
   showPrev() {
     const { currIdx } = this.state;
     const newIdx = currIdx - 1;
+
     if (currIdx % 20 === 0) this.changeSet('left', newIdx);
     else this.setState({ currIdx: newIdx });
   }
@@ -57,6 +59,7 @@ class App extends Component {
   showNext() {
     const { currIdx } = this.state;
     const newIdx = currIdx + 1;
+
     if (newIdx % 20 === 0) this.changeSet('right', newIdx);
     else this.setState({ currIdx: newIdx });
   }

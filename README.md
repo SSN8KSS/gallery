@@ -38,9 +38,9 @@ npm install
 ```
 // TODO:
 - figure out why the 3 album components on the right will re-render the 1st time i click either an arrow button or menu photo, & only the 1st time
-- figure out how to get album name text to be bright while background img is dimmer -> look at what TripAdvisor did: gray overlay on background img, then text span on top
+
 
 - refactor assignFilters in generatePhotoInfo in seedHelpers.js to be more accurate to real life, e.g. follow actual categories/types of the photos rather than random?
 - fill out trips for generatePhotoInfo based on actual trips user creates w/ UI
 - refactor user contributions in generateUserInfo to count actual # of contributions per user?
-- refactor Carousel & PhotoMenu into class components, move props unique to those from App.jsx
+- refactor Carousel & PhotoMenu into class components, move props/methods unique to those from App.jsx -> can't b/c methods use setState
