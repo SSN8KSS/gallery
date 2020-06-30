@@ -31,6 +31,7 @@ module.exports = {
     "no-unused-expressions": 0,
     "no-plusplus": 0,
     "react/jsx-curly-spacing": 0,
+    "react/jsx-wrap-multilines": 0,
     "no-confusing-arrow": 0
   },
 };

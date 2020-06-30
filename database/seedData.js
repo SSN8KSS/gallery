@@ -15,7 +15,7 @@ const seedData = () => {
       for (let num = 1, p = Promise.resolve(); num < 5; num++) {
         p = p.then( () => new Promise( resolve => (
           getPhotosFromUnsplash(num)
-            .then( res => storeUsers(res.data.results, storePhotos) )
+            .then( res => storeUsers(res.data.results) )
             .then( data => storePhotos(data) )
             .then(resolve)
             .catch(err => console.log('getPhotosFromUnsplash ERROR:', err))
@@ -41,7 +41,7 @@ const getPhotosFromUnsplash = pageNum => {
   });
 };
 
-const storeUsers = (photoData, storePhotos) => {
+const storeUsers = photoData => {
   photoData.forEach(photo => {
     const userData = photo.user;
     const randomUserInfo = helpers.generateUserInfo();
@@ -49,7 +49,7 @@ const storeUsers = (photoData, storePhotos) => {
     const newUser = {
       id: userData.id,
       username: userData.username,
-      avatarURL: userData.profile_image.medium,
+      avatarUrl: userData.profile_image.medium,
       location: randomUserInfo.location,
       type: randomUserInfo.type,
       rating: randomUserInfo.rating,
@@ -59,7 +59,6 @@ const storeUsers = (photoData, storePhotos) => {
     users.push(newUser);
   });
   return photoData;
-  // storePhotos(photoData);
 };
 
 const storePhotos = photoData => {
@@ -68,7 +67,7 @@ const storePhotos = photoData => {
 
     const newPhoto = {
       id: photo.id,
-      URL: photo.urls.regular,
+      url: photo.urls.regular,
       date: photo.created_at,
       user: randomPhotoInfo.user,
       caption: randomPhotoInfo.user.review,
@@ -84,10 +83,6 @@ const storePhotos = photoData => {
 
 const printHotels = () => {
   Hotels.find({})
-    .then(hotels => {
-      console.log(hotels[0].photos);
-      return hotels;
-    })
     .then(hotels => console.log('# of Hotels stored:', hotels.length))
     .catch(err => console.log('printHotels ERROR:', err));
 };

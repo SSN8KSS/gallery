@@ -1,55 +1,36 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 import ArrowButton from './ArrowButton.jsx';
 
-class Carousel extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { currIdx: 0 };
-    this.showPrev = this.showPrev.bind(this);
-    this.showNext = this.showNext.bind(this);
-  }
-
-  showPrev() {
-    const { currIdx } = this.state;
-    const newIdx = currIdx ? currIdx - 1 : 0;
-    this.setState({ currIdx: newIdx });
-  }
-
-  showNext() {
-    const { photos } = this.props;
-    const { currIdx } = this.state;
-    const newIdx = (currIdx === photos.length - 1) ? currIdx : currIdx + 1;
-    this.setState({ currIdx: newIdx });
-  }
-
-  render() {
-    const { photos } = this.props;
-    const { currIdx } = this.state;
-    return (
+const Carousel = props => {
+  const { photos, currIdx, showPrev, showNext } = props;
+  return photos === undefined
+    ? ( // if page is still loading, return blanks
       <Container>
-        <ArrowButton direction="left" onClick={this.showPrev} />
-        <ArrowButton direction="right" onClick={this.showNext} />
-        <MainPhoto src={ photos[currIdx].URL } />
+        <ArrowButton direction="right" />
+      </Container>
+    )
+    : (
+      <Container>
+        <ArrowButton direction="left" onClick={showPrev} idx={currIdx} />
+        <ArrowButton direction="right" onClick={showNext} idx={currIdx} length={photos.length} />
+        <MainPhoto src={ photos[currIdx].url } />
       </Container>
     );
-  }
-}
-
-Carousel.propTypes = { photos: PropTypes.arrayOf(PropTypes.object) };
-
-Carousel.defaultProps = { photos: [] };
+};
 
 const MainPhoto = styled.img`
   width: 609.750px;
   height: 371px;
+  cursor: pointer;
+  object-fit: contain;
 `;
 
 const Container = styled.div`
-  width: 609.750px;
-  height: 371px;
   position: relative;
+  background-color: #101010;
+  margin: 0 1px 1px;
+  height: 371px;
 `;
 
 export default Carousel;

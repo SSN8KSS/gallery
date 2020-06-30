@@ -2,15 +2,13 @@ const express = require('express');
 const path = require('path');
 const db = require('../database/index.js');
 const Hotels = require('../database/schema.js');
-// const seed = require('../database/seedData.js');
 
 const app = express();
-const port = 3000;
+const port = 3002;
 
 app.use( express.static( path.join(__dirname, '/../client/dist') ) );
 
 app.get('/:hotelID', (req, res) => {
-  console.log('NOW ON A HOTEL PAGE');
   res.sendFile( path.join(__dirname, '/../client/dist/index.html') );
 });
 

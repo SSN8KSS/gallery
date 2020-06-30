@@ -2,10 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 
 const ArrowButton = props => {
-  const { onClick, direction } = props;
-  return direction === 'left'
-    ? <LeftArrow onClick={onClick} src="https://i.imgur.com/FA2do8p.png" />
-    : <RightArrow onClick={onClick} src="https://i.imgur.com/fCnSxJb.png" />;
+  const { onClick, direction, idx, length } = props;
+  if (direction === 'left') {
+    if (idx === 0) return <div />;
+    return <LeftArrow onClick={onClick} src="https://i.imgur.com/FA2do8p.png" />;
+  }
+  if (idx === length - 1) return <div />;
+  return <RightArrow onClick={onClick} src="https://i.imgur.com/fCnSxJb.png" />;
 };
 
 const LeftArrow = styled.img`
@@ -14,7 +17,7 @@ const LeftArrow = styled.img`
   height: 60px;
   top: 155px;
   opacity: 60%;
-  border-radius: 5%;
+  border-radius: 8%;
   &:hover { opacity: 90%; }
 `;
 

@@ -5,7 +5,7 @@ const userSchema = new mongoose.Schema({
   username: String,
   location: String,
   type: String,
-  avatarURL: String,
+  avatarUrl: String,
   rating: Number,
   contributions: Number,
   review: String // will often be the photo caption, unless user type is Management?
@@ -20,7 +20,7 @@ const photoSchema = new mongoose.Schema({
   caption: String,
   trips: [ String ], // this is the Heart/Favorite feature
   helpful: Number,
-  URL: String
+  url: String
 });
 
 const hotelSchema = new mongoose.Schema({
