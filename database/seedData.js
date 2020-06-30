@@ -9,8 +9,6 @@ const photos = [];
 const seedData = () => {
   Hotels.deleteMany({}, () => console.log('Hotels cleared'))
     .then(() => {
-      console.log('\n\n\n');
-
       // make 4 rounds of GET reqs to unsplash for a total of 120 photos
       for (let num = 1, p = Promise.resolve(); num < 5; num++) {
         p = p.then( () => new Promise( resolve => (

@@ -18,7 +18,7 @@ const LeftArrow = styled.img`
   top: 155px;
   opacity: 60%;
   border-radius: 8%;
-  &:hover { opacity: 90%; }
+  &:hover { opacity: 0.9; }
 `;
 
 const RightArrow = styled(LeftArrow)`
