@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 mongoose.connect(
-  'mongodb://localhost/fec',
+  'mongodb://172.17.0.2/fec',
   { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true }
 );
 

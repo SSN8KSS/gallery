@@ -27,7 +27,7 @@ const Container = styled.div`
   color: white;
   white-space: pre-line;
   font-family: Poppins;
-  pointer: cursor;
+  cursor: pointer;
 `;
 
 const Overlay = styled.div`
