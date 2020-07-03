@@ -19,7 +19,8 @@ const seedData = () => {
           Hotels.insertMany(hotels)
             .then(printHotels)
             .catch(err => console.log('ERROR:', err));
-        });
+        })
+        .catch(err => console.log('ERROR:', err));
     })
     .catch(err => console.log('seedData ERROR:', err));
 };
