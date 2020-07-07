@@ -17,4 +17,4 @@ app.get('/api/:hotelID/photos', (req, res) => {
     .then( hotels => res.status(200).send(hotels[0]) );
 });
 
-app.listen(port, () => console.log(`listening on port ${port}`));
+app.listen(port, () => console.log(`FEC listening on port ${port}`));
