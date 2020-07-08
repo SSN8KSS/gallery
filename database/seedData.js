@@ -83,7 +83,7 @@ const storePhotos = photoData => {
 
 const printHotels = () => {
   Hotels.find({})
-    .then(hotels => console.log('# of Hotels stored:', hotels.length))
+    .then(arr => console.log('# of Hotels stored:', arr.length))
     .then(() => {
       db.close();
       console.log('DB CLOSED');
