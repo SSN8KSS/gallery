@@ -1,29 +1,28 @@
 # Project Name
 
-> Project description
+**Project description**
+  Booking service for travel destinations.
 
 ## Related Projects
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+  - https://github.com/SSN8KSS/gallery-proxy
+  - https://github.com/SSN8KSS/Sam-Reviews-SDC
+  - https://github.com/SSN8KSS/repo
 
 ## Table of Contents
 
 1. [Usage](#Usage)
-1. [Requirements](#requirements)
-1. [Development](#development)
+2. [Requirements](#requirements)
+3. [Development](#development)
+4. [Server API](#Server)
 
 ## Usage
 
-> Some usage instructions
+> TODO: Some usage instructions
 
 ## Requirements
 
-An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
-
-- Node 6.13.0
+- TODO: Node 6.13.0
 - etc
 
 ## Development
@@ -33,15 +32,132 @@ An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
 From within the root directory:
 
 ```sh
-npm install -g webpack
 npm install
 ```
 
-TODO:
-- figure out why the 3 album components on the right will re-render the 1st time i click either an arrow button or menu photo, & only the 1st time
 
 
-- refactor assignFilters in generatePhotoInfo in seedHelpers.js to be more accurate to real life, e.g. follow actual categories/types of the photos rather than random?
-- fill out trips for generatePhotoInfo based on actual trips user creates w/ UI
-- refactor user contributions in generateUserInfo to count actual # of contributions per user?
-- refactor Carousel & PhotoMenu into class components, move props/methods unique to those from App.jsx -> can't b/c methods use setState
+## Server API
+
+### Get hotel info
+  * GET: `/api/:hotelId/photos`
+
+**Path Parameters:**
+  * `id` hotel id
+
+**Success Status Code:** `200`
+
+**Returns:** JSON
+
+```
+{
+  id: { type: Number, unique: true },
+  name: String,
+  photoAlbums: [ String ],
+  price: Number,
+  photos: {
+    id: String,
+    albums: [ String ],
+    filters: [ String ],
+    date: Date,
+    caption: String,
+    trips: [ String ],
+    helpful: Number,
+    url: String
+    user: {
+      id: String,
+      username: String,
+      location: String,
+      type: String,
+      avatarUrl: String,
+      rating: Number,
+      contributions: Number,
+      review: String
+    }
+  }
+}
+```
+
+### Add hotel
+  * Post: `/api/:hotelId/photos`
+
+**Success Status Code:** `201`
+
+**Request Body**: Expects JSON with the following keys.
+
+```
+{
+  id: { type: Number, unique: true },
+  name: String,
+  photoAlbums: [ String ],
+  price: Number,
+  photos: {
+    id: String,
+    albums: [ String ],
+    filters: [ String ],
+    date: Date,
+    caption: String,
+    trips: [ String ],
+    helpful: Number,
+    url: String
+    user: {
+      id: String,
+      username: String,
+      location: String,
+      type: String,
+      avatarUrl: String,
+      rating: Number,
+      contributions: Number,
+      review: String
+    }
+  }
+}
+```
+
+
+### Update hotel info
+  * Patch: `/api/:hotelId/photos`
+
+**Path Parameters:**
+  * `id` hotel id
+
+**Success Status Code:** `204`
+
+**Request Body**: Expects JSON with any of the following keys (include only keys to be updated)
+
+```
+{
+  id: { type: Number, unique: true },
+  name: String,
+  photoAlbums: [ String ],
+  price: Number,
+  photos: {
+    id: String,
+    albums: [ String ],
+    filters: [ String ],
+    date: Date,
+    caption: String,
+    trips: [ String ],
+    helpful: Number,
+    url: String
+    user: {
+      id: String,
+      username: String,
+      location: String,
+      type: String,
+      avatarUrl: String,
+      rating: Number,
+      contributions: Number,
+      review: String
+    }
+  }
+}
+```
+
+### Delete hotel
+  * Delete: `/api/:hotelID/photos`
+
+**Path Parameters:**
+  * `id` hotel id
+
+**Success Status Code:** `204`
