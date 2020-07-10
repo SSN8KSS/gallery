@@ -39,8 +39,8 @@ npm install
 
 ## Server API
 
-### Get hotel info
-  * GET: `/api/:hotelId/photos`
+### Get hotel photos
+  * GET: `/api/hotels/:hotelId/photos`
 
 **Path Parameters:**
   * `id` hotel id
@@ -79,7 +79,7 @@ npm install
 ```
 
 ### Add hotel
-  * Post: `/api/:hotelId/photos`
+  * Post: `/api/hotels/:hotelId`
 
 **Success Status Code:** `201`
 
@@ -116,7 +116,7 @@ npm install
 
 
 ### Update hotel info
-  * Patch: `/api/:hotelId/photos`
+  * Patch: `/api/hotels/:hotelId/photos`
 
 **Path Parameters:**
   * `id` hotel id
@@ -155,7 +155,7 @@ npm install
 ```
 
 ### Delete hotel
-  * Delete: `/api/:hotelID/photos`
+  * Delete: `/api/hotels/:id/photos`
 
 **Path Parameters:**
   * `id` hotel id

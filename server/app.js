@@ -12,7 +12,7 @@ app.get('/:hotelID', (req, res) => {
   res.sendFile( path.join(__dirname, '/../client/dist/index.html') );
 });
 
-app.get('/api/:hotelID/photos', (req, res) => {
+app.get('/api/hotels/:hotelID/photos', (req, res) => {
   Hotels.find({ id: req.params.hotelID })
     .then( hotels => res.status(200).send(hotels[0]) );
 });
