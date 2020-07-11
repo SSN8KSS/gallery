@@ -39,6 +39,24 @@ npm install
 
 ## Server API
 
+### Create hotel
+  * Post: `/api/hotels/:hotelId`
+
+**Success Status Code:** `201`
+
+**Request Body**: Expects JSON with the following keys.
+
+```
+{
+  "id": "Number",
+  "name": "String",
+  "address": "String",
+  "phone": "String",
+  "website": "String",
+  "cost": "Number"
+}
+```
+
 ### Get hotel photos
   * GET: `/api/hotels/:hotelId/photos`
 
@@ -51,71 +69,17 @@ npm install
 
 ```
 {
-  id: { type: Number, unique: true },
-  name: String,
-  photoAlbums: [ String ],
-  price: Number,
-  photos: {
-    id: String,
-    albums: [ String ],
-    filters: [ String ],
-    date: Date,
-    caption: String,
-    trips: [ String ],
-    helpful: Number,
-    url: String
-    user: {
-      id: String,
-      username: String,
-      location: String,
-      type: String,
-      avatarUrl: String,
-      rating: Number,
-      contributions: Number,
-      review: String
-    }
-  }
+  photos: [ 
+    {
+      id: "Number",
+      hotelId: "Number",
+      url: "String"
+    } 
+  ]
 }
 ```
 
-### Add hotel
-  * Post: `/api/hotels/:hotelId`
-
-**Success Status Code:** `201`
-
-**Request Body**: Expects JSON with the following keys.
-
-```
-{
-  id: { type: Number, unique: true },
-  name: String,
-  photoAlbums: [ String ],
-  price: Number,
-  photos: {
-    id: String,
-    albums: [ String ],
-    filters: [ String ],
-    date: Date,
-    caption: String,
-    trips: [ String ],
-    helpful: Number,
-    url: String
-    user: {
-      id: String,
-      username: String,
-      location: String,
-      type: String,
-      avatarUrl: String,
-      rating: Number,
-      contributions: Number,
-      review: String
-    }
-  }
-}
-```
-
-
-### Update hotel info
+### Update hotel photos
   * Patch: `/api/hotels/:hotelId/photos`
 
 **Path Parameters:**
@@ -127,35 +91,18 @@ npm install
 
 ```
 {
-  id: { type: Number, unique: true },
-  name: String,
-  photoAlbums: [ String ],
-  price: Number,
-  photos: {
-    id: String,
-    albums: [ String ],
-    filters: [ String ],
-    date: Date,
-    caption: String,
-    trips: [ String ],
-    helpful: Number,
-    url: String
-    user: {
-      id: String,
-      username: String,
-      location: String,
-      type: String,
-      avatarUrl: String,
-      rating: Number,
-      contributions: Number,
-      review: String
-    }
-  }
+  photos: [ 
+    {
+      id: "Number",
+      hotelId: "Number",
+      url: "String"
+    } 
+  ]
 }
 ```
 
-### Delete hotel
-  * Delete: `/api/hotels/:id/photos`
+### Delete hotel photo
+  * Delete: `/api/hotels/:hotelId/photos/:photoId`
 
 **Path Parameters:**
   * `id` hotel id
