@@ -7,7 +7,7 @@ CREATE TABLE hotels (
   name VARCHAR(255),
   address VARCHAR(255),
   phone VARCHAR(10),
-  website VARCHAR(255),
+  website text,
   cost SMALLINT,
   PRIMARY KEY (id)
 );
@@ -15,7 +15,8 @@ CREATE TABLE hotels (
 CREATE TABLE photos (
   id SERIAL,
   hotelId INT NOT NULL,
-  url VARCHAR(255),
+  description text,
+  url text,
   PRIMARY KEY (id),
   FOREIGN KEY (hotelId) REFERENCES hotels (id)
 );

@@ -1,6 +1,6 @@
 ## Define Queries
 
-### Create a hotel
+### Create a hotel (QID 1)
 * Post: `/api/hotels/:hotelId`
 
 **Success Status Code:** `201`
@@ -18,7 +18,7 @@
 }
 ```
 
-### Get a hotel
+### Get a hotel (QID 2)
 * GET: `/api/hotels/:hotelId`
 
 **Success Status Code:** `200`
@@ -36,7 +36,7 @@
 }
 ```
 
-### Update a hotel's info
+### Update a hotel's info (QID 3)
 * Patch: `/api/hotels/:hotelId`
 
 **Success Status Code:** `204`
@@ -54,7 +54,7 @@
 }
 ```
 
-### Delete a hotel
+### Delete a hotel (QID 4)
 * Delete: `/api/hotels/:hotelId`
 
 **Path Parameters:**
@@ -63,7 +63,7 @@
 **Success Status Code:** `204`
 
 
-### Create photo(s) to specific hotel
+### Create photo(s) to specific hotel (QID 5)
 * Post: `/api/hotels/:hotelId/photos`
 
 **Path Parameters:**
@@ -86,7 +86,7 @@
 ```
 
 
-### Get photos of a specific hotel
+### Get photos of a specific hotel (QID 6)
 * GET: `/api/hotels/:hotelId/photos`
 
 **Path Parameters:**
@@ -108,7 +108,7 @@
 }
 ```
 
-### Delete photo(s) of specific hotel
+### Delete photo(s) of specific hotel (QID 7)
 * Delete: `/api/hotels/:hotelId/photos/:photoId`
 
 **Path Parameters:**
