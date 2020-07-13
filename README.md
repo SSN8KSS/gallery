@@ -34,13 +34,10 @@ From within the root directory:
 ```sh
 npm install
 ```
+## Define Queries
 
-
-
-## Server API
-
-### Create hotel
-  * Post: `/api/hotels/:hotelId`
+### Create a hotel (QID 1)
+* Post: `/api/hotels`
 
 **Success Status Code:** `201`
 
@@ -57,8 +54,73 @@ npm install
 }
 ```
 
-### Get hotel photos
-  * GET: `/api/hotels/:hotelId/photos`
+### Get a hotel (QID 2)
+* GET: `/api/hotels/:hotelId`
+
+**Success Status Code:** `200`
+
+**Request Body**: Expects JSON with the following keys.
+
+```
+{
+  "id": "Number",
+  "name": "String",
+  "address": "String",
+  "phone": "String",
+  "website": "String",
+  "cost": "Number"
+}
+```
+
+### Update a hotel's info (QID 3)
+* Patch: `/api/hotels/:hotelId`
+
+**Success Status Code:** `204`
+
+**Request Body**: Expects JSON with the following keys.
+
+```
+{
+  "id": "Number",
+  "name": "String",
+  "address": "String",
+  "phone": "String",
+  "website": "String",
+  "cost": "Number"
+}
+```
+
+### Delete a hotel (QID 4)
+* Delete: `/api/hotels/:hotelId`
+
+**Path Parameters:**
+  * `id` hotel id
+
+**Success Status Code:** `204`
+
+
+### Create photo to specific hotel (QID 5)
+* Post: `/api/hotels/:hotelId/photos`
+
+**Path Parameters:**
+  * `id` hotel id
+
+**Success Status Code:** `201`
+
+**Returns:** JSON
+
+```
+{
+  id: "Number",
+  hotelId: "Number",
+  category: "String",
+  url: "String"
+} 
+```
+
+
+### Get photos of a specific hotel (QID 6)
+* GET: `/api/hotels/:hotelId/photos`
 
 **Path Parameters:**
   * `id` hotel id
@@ -68,43 +130,23 @@ npm install
 **Returns:** JSON
 
 ```
-{
-  photos: [ 
-    {
-      id: "Number",
-      hotelId: "Number",
-      url: "String"
-    } 
-  ]
-}
+[ 
+  {
+    id: "Number",
+    hotelId: "Number",
+    category: "String"
+    url: "String"
+  } 
+]
 ```
 
-### Update hotel photos
-  * Patch: `/api/hotels/:hotelId/photos`
+### Delete photo(s) of specific hotel (QID 7)
+* Delete: `/api/hotels/:hotelId/photos/:photoId`
 
 **Path Parameters:**
   * `id` hotel id
 
 **Success Status Code:** `204`
 
-**Request Body**: Expects JSON with any of the following keys (include only keys to be updated)
 
-```
-{
-  photos: [ 
-    {
-      id: "Number",
-      hotelId: "Number",
-      url: "String"
-    } 
-  ]
-}
-```
 
-### Delete hotel photo
-  * Delete: `/api/hotels/:hotelId/photos/:photoId`
-
-**Path Parameters:**
-  * `id` hotel id
-
-**Success Status Code:** `204`
