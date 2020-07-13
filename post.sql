@@ -16,6 +16,7 @@ CREATE TABLE photos (
   id SERIAL,
   hotelId INT NOT NULL,
   description text,
+  category text,
   url text,
   PRIMARY KEY (id),
   FOREIGN KEY (hotelId) REFERENCES hotels (id)

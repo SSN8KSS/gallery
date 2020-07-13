@@ -1,7 +1,7 @@
 ## Define Queries
 
 ### Create a hotel (QID 1)
-* Post: `/api/hotels/:hotelId`
+* Post: `/api/hotels`
 
 **Success Status Code:** `201`
 
@@ -63,7 +63,7 @@
 **Success Status Code:** `204`
 
 
-### Create photo(s) to specific hotel (QID 5)
+### Create photo to specific hotel (QID 5)
 * Post: `/api/hotels/:hotelId/photos`
 
 **Path Parameters:**
@@ -75,14 +75,11 @@
 
 ```
 {
-  photos: [ 
-    {
-      id: "Number",
-      hotelId: "Number",
-      url: "String"
-    } 
-  ]
-}
+  id: "Number",
+  hotelId: "Number",
+  category: "String",
+  url: "String"
+} 
 ```
 
 
@@ -97,15 +94,14 @@
 **Returns:** JSON
 
 ```
-{
-  photos: [ 
-    {
-      id: "Number",
-      hotelId: "Number",
-      url: "String"
-    } 
-  ]
-}
+[ 
+  {
+    id: "Number",
+    hotelId: "Number",
+    category: "String"
+    url: "String"
+  } 
+]
 ```
 
 ### Delete photo(s) of specific hotel (QID 7)
