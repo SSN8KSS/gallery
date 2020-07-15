@@ -1,6 +1,6 @@
 DROP DATABASE IF EXISTS sqltripad;
 CREATE DATABASE sqltripad;
-USE sqltripad;
+\connect sqltripad;
 
 CREATE TABLE hotels (
   id SERIAL,
@@ -23,4 +23,4 @@ CREATE TABLE photos (
 );
 
 -- COPY hotels (id, name, address, phone, website, cost) FROM '/path/to/bigol/file.csv'
--- COPY photos (id, hotelId, url) FROM '/path/to/other/bigfile.csv'
+-- COPY photos (id, hotelId, description, category, url) FROM '/path/to/other/bigfile.csv'

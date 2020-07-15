@@ -15,4 +15,5 @@ CREATE TABLE photosByHotel (
   PRIMARY KEY (hotelId, category) 
 )
 
-COPY photosByHotel (id, hotelId, description, category, url, name, address, phone, website, cost) FROM '/path/to/bigfile.csv'
+COPY photosByHotel (id, hotelId, description, category, url,
+ name, address, phone, website, cost) FROM '/path/to/bigfile.csv'
