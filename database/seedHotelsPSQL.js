@@ -17,7 +17,7 @@ const generateHotelName = () => {
   return name;
 };
 
-const generateAddress = () => `${faker.address.streetAddress()}, ${faker.address.city()}, ${faker.address.stateAbbr()}, ${faker.address.zipCode()}`;
+const generateAddress = () => `${faker.address.streetAddress()} ${faker.address.city()} ${faker.address.stateAbbr()} ${faker.address.zipCode()}`;
 
 const generatePhone = () => faker.phone.phoneNumberFormat();
 
@@ -29,10 +29,12 @@ const writeStream = fs.createWriteStream(path.join(__dirname, '../database/psqlH
 
 function writeOneMillionTimes(writer, callback) {
   let i = 1000000;
+  let hotelCount = 0;
   function write() {
     let ok = true;
     do {
       i--;
+      hotelCount++;
       if (i === 0) {
         // Last time!
         const query = `${generateHotelName()}, ${generateAddress()}, ${generatePhone()}, ${generateWebsite()}, ${generateCost()}\n`;
@@ -40,7 +42,7 @@ function writeOneMillionTimes(writer, callback) {
       } else {
         // See if we should continue, or wait.
         // Don't pass the callback, because we're not done yet.
-        const query = `${generateHotelName()}, ${generateAddress()}, ${generatePhone()}, ${generateWebsite()}, ${generateCost()}\n`;
+        const query = `${hotelCount}, ${generateHotelName()}, ${generateAddress()}, ${generatePhone()}, ${generateWebsite()}, ${generateCost()}\n`;
         ok = writer.write(query);
       }
     } while (i > 0 && ok);

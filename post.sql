@@ -6,7 +6,7 @@ CREATE TABLE hotels (
   id SERIAL,
   name VARCHAR(255),
   address VARCHAR(255),
-  phone VARCHAR(10),
+  phone VARCHAR(15),
   website text,
   cost SMALLINT,
   PRIMARY KEY (id)
@@ -22,5 +22,5 @@ CREATE TABLE photos (
   FOREIGN KEY (hotelId) REFERENCES hotels (id)
 );
 
--- COPY hotels (id, name, address, phone, website, cost) FROM '/path/to/bigol/file.csv'
--- COPY photos (id, hotelId, description, category, url) FROM '/path/to/other/bigfile.csv'
+COPY hotels(id, name, address, phone, website, cost) FROM '/Users/kimosilva/Documents/hrRepos/ssn8kss/photos-carousel/database/psqlHotels.csv' DELIMITER ',';
+COPY photos(id, hotelId, description, category, url) FROM '/Users/kimosilva/Documents/hrRepos/ssn8kss/photos-carousel/database/psqlPhotos.csv' DELIMITER ',';
