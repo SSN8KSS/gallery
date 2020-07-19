@@ -1,9 +1,11 @@
-DROP KEYSPACE IF EXISTS hotels;
+DROP KEYSPACE IF EXISTS gallery;
 CREATE KEYSPACE gallery WITH REPLICATION = {'class': 'SimpleStrategy', 'replication_factor': '1'} AND durable_writes = 'true';
 
+USE gallery;
+
 CREATE TABLE photosByHotel (
-  id UUID,
-  hotelId INT NOT NULL,
+  id INT,
+  hotelId INT,
   description text,
   category text,
   url text,
@@ -13,7 +15,7 @@ CREATE TABLE photosByHotel (
   website text,
   cost smallint,
   PRIMARY KEY (hotelId, category) 
-)
+);
 
 COPY photosByHotel (id, hotelId, description, category, url,
- name, address, phone, website, cost) FROM '/path/to/bigfile.csv'
+ name, address, phone, website, cost) FROM '/Users/kimosilva/Documents/hrRepos/ssn8kss/photos-carousel/database/cqlPhotos.csv';
