@@ -9,7 +9,7 @@ const connection = new cassandra.Client({
 
 connection.connect()
   .catch((err) => {
-    console.error('There was an error when connecting', err);
+    console.error('Error connecting to database: ', err);
     return connection.shutdown().then(() => { throw err; });
   });
 
