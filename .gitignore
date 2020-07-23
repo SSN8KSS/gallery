@@ -3,6 +3,8 @@ node_modules
 
 database/cqlPhotos.csv
 
+database/credentials.js
+
 database/psqlHotels.csv
 
 database/psqlPhotos.csv

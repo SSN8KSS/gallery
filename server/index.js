@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const connection = require('../database/index.js');
+const controller = require('./controller.js');
 
 const app = express();
 const port = 3002;
@@ -20,7 +21,7 @@ app.use( express.static( path.join(__dirname, '/../client/dist') ) );
 // });
 
 app.get('/api/hotels/:hotelId/photos', (req, res) => {
-  Hotels.getPhoto({ id: req.params.hotelId })
+  controller.getPhotos({ id: req.params.hotelId })
     .then( hotels => res.status(200).send(hotels[0]) );
 });
 

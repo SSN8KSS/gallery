@@ -1,3 +1,4 @@
+/* eslint-disable react/destructuring-assignment */
 /* eslint-disable import/extensions */
 import React, { Component } from 'react';
 import axios from 'axios';
