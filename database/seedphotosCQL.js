@@ -36,7 +36,7 @@ const generateAddress = () => `${faker.address.streetAddress()} ${faker.address.
 const writeStream = fs.createWriteStream(path.join(__dirname, '../database/cqlPhotos.csv'));
 
 function writeOneMillionTimes(writer, callback) {
-  let i = 150;
+  let i = 15000000;
   let hotelCount = 1;
   let photoCount = 0;
   function write() {

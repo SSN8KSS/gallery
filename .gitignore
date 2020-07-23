@@ -1,4 +1,5 @@
 node_modules
 .eslintrc.js
+database/cqlPhotos.csv
 database/psqlHotels.csv
 database/psqlPhotos.csv

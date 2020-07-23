@@ -11,7 +11,7 @@
     "seed": "node database/seedData.js",
     "nodemon": "nodemon server/app.js",
     "webpack": "webpack -d --watch",
-    "start": "node server/app.js",
+    "start": "node server/index.js",
     "build": "webpack --mode production",
     "test": "jest",
     "eject": "react-scripts eject"
@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "axios": "^0.19.2",
+    "cassandra-driver": "^4.5.2",
     "express": "^4.17.1",
     "faker": "^4.1.0",
     "moment": "^2.27.0",

@@ -1,10 +1,11 @@
+/* eslint-disable import/extensions */
 import React, { Component } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import Carousel from './Carousel.jsx';
 import PhotoMenu from './PhotoMenu.jsx';
 import Albums from './Albums.jsx';
-import Modal from './Modal.jsx';
+// import Modal from './Modal.jsx';
 
 class App extends Component {
   constructor(props) {
