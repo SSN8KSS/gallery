@@ -15,12 +15,12 @@ connection.connect((err, res) => {
 
 app.use( express.static( path.join(__dirname, '/../client/dist') ) );
 
-app.get('/:hotelID', (req, res) => {
-  res.sendFile( path.join(__dirname, '/../client/dist/index.html') );
-});
+// app.get('/:hotelID', (req, res) => {
+//   res.sendFile( path.join(__dirname, '/../client/dist/index.html') );
+// });
 
-app.get('/api/hotels/:hotelID/photos', (req, res) => {
-  Hotels.getPhoto({ id: req.params.hotelID })
+app.get('/api/hotels/:hotelId/photos', (req, res) => {
+  Hotels.getPhoto({ id: req.params.hotelId })
     .then( hotels => res.status(200).send(hotels[0]) );
 });
 

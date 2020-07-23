@@ -9,7 +9,7 @@
   },
   "scripts": {
     "seed": "node database/seedData.js",
-    "nodemon": "nodemon server/app.js",
+    "nodemon": "nodemon server/index.js",
     "webpack": "webpack -d --watch",
     "start": "node server/index.js",
     "build": "webpack --mode production",

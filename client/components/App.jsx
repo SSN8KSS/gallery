@@ -15,7 +15,6 @@ class App extends Component {
       currIdx: 0,
       menuFirstIdx: 0,
       albums: [ 'Loading...', 'Loading...', 'Loading...' ],
-      modal: false
     };
 
     this.showPrev = this.showPrev.bind(this);
@@ -26,13 +25,12 @@ class App extends Component {
 
   componentDidMount() {
     const splitUrl = window.location.href.split('/');
-    const hotelID = splitUrl[splitUrl.length - 1] || '1';
+    const hotelId = splitUrl[splitUrl.length - 1] || '1';
 
-    axios.get(`/api/${hotelID}/photos`)
+    axios.get(`/api/hotels/${hotelId}/photos`)
       .then(res => {
-        res.data.photos.forEach((photo, idx) => photo.idx = idx); // assign each photo an idx
         this.setState({ hotel: res.data });
-        // console.log('HOTEL:', this.state.hotel);
+        console.log('HOTEL:', this.state.hotel);
       })
       .then( () => this.setState({ albums: this.getAlbums() }) );
   }
@@ -46,7 +44,7 @@ class App extends Component {
     const { hotel } = this.state;
     const albums = hotel.photoAlbums;
     const offLimits = [ 'Favorites' ];
-    const secondAlbum = albums[ App.getRandIdx(albums, offLimits) ];
+    const secondAlbum = albums[App.getRandIdx(albums, offLimits)];
 
     offLimits.push(secondAlbum);
     return [ albums[1], secondAlbum, albums[App.getRandIdx(albums, offLimits)] ];
@@ -83,7 +81,9 @@ class App extends Component {
   // }
 
   render() {
-    const { hotel, currIdx, menuFirstIdx, albums, modal } = this.state;
+    const {
+      hotel, currIdx, menuFirstIdx, albums,
+    } = this.state;
     // if (modal) return <Modal />;
     return (
       <Background>
