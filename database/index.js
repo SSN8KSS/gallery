@@ -1,5 +1,5 @@
 const cassandra = require('cassandra-driver');
-const credentials  = require('./credentials.js');
+const credentials = require('./credentials.js');
 
 const connection = new cassandra.Client({
   contactPoints: credentials.contactPoints,

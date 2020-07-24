@@ -1,12 +1,15 @@
 const Model = require('./Model.js');
 
 module.exports = {
-  getPhotos: (req, res) => {
-    const { hotelId } = req.params;
-    console.log(hotelId);
-    Model.getPhotosByHotel(hotelId)
+  getPhotosByHotel: (req, res) => {
+    Model.getPhotosByHotel(req.params.hotelId)
       .then((photos) => {
         res.status(200).send(photos.rows);
+      })
+      .catch((err) => {
+        if (err) {
+          console.log(err);
+        }
       });
   }
 };

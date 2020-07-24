@@ -8,11 +8,12 @@ module.exports = {
   // },
   getPhotosByHotel(hotelId) {
     return new Promise((resolve, reject) => {
-      const query = 'SELECT * FROM hotelreviews WHERE hotel_name= ?';
-      connection.execute(query, [hotelId], ((err, results) => {
+      const query = 'SELECT * FROM photosByHotel WHERE hotelId= ?';
+      connection.execute(query, [hotelId], { prepare: true }, ((err, results) => {
         if (err) {
           reject(err);
         } else {
+          console.log(results.rows);
           resolve(results);
         }
       }));
